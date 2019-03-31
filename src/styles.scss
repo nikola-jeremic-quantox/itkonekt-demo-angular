@@ -9,12 +9,26 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
 
 .spacer {
   flex: 1 1 auto;
+}
+
+input, textarea {
+  padding: 8px 10px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  resize: none;
+  outline: 0;
+  &:action, &:hover {
+    outline: 0;
+  }
 }
 
 .app-container {
@@ -45,8 +59,8 @@ h1, h2, h3, h4, h5, h6, p {
 .mat-drawer.mat-sidenav {
   width: 400px;
   max-width: 90vw;
-  background: rgb(110, 60, 60);
-  box-shadow: 1px 1px 20px 1px rgb(110, 60, 60);
+  background: rgb(180, 180, 180);
+  box-shadow: 1px 1px 20px 1px rgb(180, 180, 180);
 }
 
 mat-sidenav-content.mat-drawer-content {
