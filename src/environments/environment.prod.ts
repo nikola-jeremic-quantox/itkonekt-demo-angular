@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyCTCHeo_uKyAHBHZYvICqruN6u3IJFE2Zo',
-    authDomain: 'it-konekt-demo.firebaseapp.com',
-    databaseURL: 'https://it-konekt-demo.firebaseio.com',
-    projectId: 'it-konekt-demo',
-    storageBucket: 'it-konekt-demo.appspot.com',
-    messagingSenderId: '960675677035'
+    apiKey: 'AIzaSyARfcYHJG0orhSDG0wHuI4tCzhSrKvhQcc',
+    authDomain: 'quantoxfirebase.firebaseapp.com',
+    databaseURL: 'https://quantoxfirebase.firebaseio.com',
+    projectId: 'quantoxfirebase',
+    storageBucket: 'quantoxfirebase.appspot.com',
+    messagingSenderId: '508820124942'
   }
 };

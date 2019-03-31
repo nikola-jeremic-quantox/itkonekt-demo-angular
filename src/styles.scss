@@ -1,4 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~firebaseui/dist/firebaseui.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.header-toolbar {
+  height: 70px;
+  min-height: 70px;
+  max-height: 70px;
+}
+
+.sidenav-container {
+  height: calc(100vh - 70px);
+  flex: 1;
+}
+
+.is-mobile .sidenav-container {
+  flex: 1 0 auto;
+}
+
+.mat-drawer.mat-sidenav {
+  width: 400px;
+  max-width: 90vw;
+  background: rgb(110, 60, 60);
+  box-shadow: 1px 1px 20px 1px rgb(110, 60, 60);
+}
+
+mat-sidenav-content.mat-drawer-content {
+  background: white;
+}

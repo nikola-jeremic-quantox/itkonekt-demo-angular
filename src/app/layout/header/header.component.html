@@ -1,0 +1,21 @@
+<mat-toolbar color="warn" class="header-toolbar">
+  <h1>Angular Firebase Demo</h1>
+  <div class="spacer"></div>
+  <button
+    *ngIf="isLogged !== true"
+    mat-icon-button
+    (click)="onLogin()">
+    <mat-icon>person</mat-icon>
+  </button>
+  <button
+    *ngIf="isLogged === true"
+    mat-icon-button
+    (click)="onLogout()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    (click)="onToggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>

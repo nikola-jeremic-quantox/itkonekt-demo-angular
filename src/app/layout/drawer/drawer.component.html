@@ -1,0 +1,23 @@
+<div class="app-container" [class.is-mobile]="mobileQuery.matches" >
+
+  <app-header
+    (toggleClicked)="sidenav.toggle()"
+    (logoutEvent)="isLoggedOut = true">
+  </app-header>
+
+  <mat-sidenav-container
+    class="sidenav-container">
+
+    <mat-sidenav
+      #sidenav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      position="end">
+      <app-chat></app-chat>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <app-profile [isLoggedOut]="isLoggedOut"></app-profile>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</div>

@@ -1,32 +1,28 @@
+import { AngularFireModule } from '@angular/fire';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FirebaseModule } from './firebase/firebase.module';
+import { LayoutModule } from './layout/layout.module';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireFunctionsModule } from '@angular/fire/functions';
-import { AngularFireMessagingModule } from '@angular/fire/messaging';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase, 'It Konekt Demo'),
-    AngularFireAuthModule,
-    AngularFireFunctionsModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireMessagingModule
+    FirebaseModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,25 @@
+<div class="profile-card" *ngIf="user && !isLoggedOut">
+
+  <img [src]="user.photoUrl" alt="user image">
+
+  <div class="user-data">
+    <h2>{{user.fullname}}</h2>
+    <p>{{user.email}}</p>
+  </div>
+
+</div>
+
+<div class="profile-card" *ngIf="isLoggedOut || !user">
+
+  <h4>
+    Please
+    <button
+      color="primary"
+      (click)="goToLogin()"
+      mat-flat-button>
+      Login
+    </button>
+    if you want to be involved in chat
+  </h4>
+
+  </div>
