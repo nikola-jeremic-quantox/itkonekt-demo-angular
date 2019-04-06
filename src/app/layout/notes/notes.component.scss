@@ -1,0 +1,31 @@
+.notes-wrapper {
+  margin: 25px;
+}
+
+.note-title {
+  color: black;
+  margin: 25px 35px;
+  button {
+    vertical-align: middle;
+    margin-left: 15px;
+  }
+}
+
+mat-card.notes {
+  width: 300px;
+  max-width: calc(100vw - 40px);
+  min-height: 200px;
+  margin: 0 10px 15px;
+  display: inline-block;
+  box-shadow: 1px 1px 20px 1px gray;
+  vertical-align: top;
+}
+
+.mat-card-subtitle {
+  color:  rgb(217, 242, 250);
+}
+
+
+.note-avatar {
+  background-size: cover;
+}

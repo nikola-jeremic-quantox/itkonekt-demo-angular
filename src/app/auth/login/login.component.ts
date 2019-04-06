@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     const token = result && result.credential.accessToken;
     const user = {
-      id:         result.user.uid,
+      userId:     result.user.uid,
       username:   result.user.displayName,
       fullname:   result.additionalUserInfo.profile.name,
       email:      result.user.email,

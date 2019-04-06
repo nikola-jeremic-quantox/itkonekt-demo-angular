@@ -20,6 +20,16 @@ img {
   h2 {
     margin-bottom: 10px;
   }
+  p {
+    margin: 10px 5px;
+    span {
+      display: inline-block;
+      margin-right: 5px;
+      font-weight: bold;
+      color: #7b1fa2;
+      width: 70px;
+    }
+  }
 }
 
 button {

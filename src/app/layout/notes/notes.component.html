@@ -1,0 +1,48 @@
+<h2 class="note-title">
+  Notes
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="createNote()">
+    <mat-icon>add</mat-icon>
+    Create new
+  </button>
+</h2>
+
+<div class="notes-wrapper">
+    <mat-card
+      class="notes"
+      *ngFor="let note of (notes$ | async)"
+      [style.backgroundColor]="
+        note.authorId === user.userId ?
+        'rgb(48, 122, 87)' :
+        'rgb(48, 95, 122)' ">
+
+      <mat-card-header>
+        <div
+          *ngIf="note.authorPhoto"
+          mat-card-avatar
+          class="note-avatar"
+          [style.backgroundImage]="'url(' + note.authorPhoto + ')'"
+        ></div>
+        <div
+          *ngIf="!note.authorPhoto"
+          mat-card-avatar
+          class="note-avatar"
+          [style.backgroundImage]="defaultImage"
+        ></div>
+        <mat-card-title>{{ note.title }}</mat-card-title>
+        <mat-card-subtitle>{{ note.author }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>{{ note.message }}</p>
+      </mat-card-content>
+
+      <mat-card-actions *ngIf="note.authorId === user.userId">
+        <button mat-button>Edit</button>
+        <button mat-button>Delete</button>
+      </mat-card-actions>
+
+    </mat-card>
+</div>

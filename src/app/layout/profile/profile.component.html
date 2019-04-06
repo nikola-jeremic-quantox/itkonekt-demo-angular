@@ -1,25 +1,37 @@
 <div class="profile-card" *ngIf="user && !isLoggedOut">
+  <img [src]="user.photoUrl" alt="user image" />
 
-  <img [src]="user.photoUrl" alt="user image">
-
-  <div class="user-data">
-    <h2>{{user.fullname}}</h2>
-    <p>{{user.email}}</p>
+  <div class="user-data" *ngIf="author">
+    <ng-container *ngIf="author.userId">
+      <h2>{{ author.fullname }}</h2>
+      <p><span>User ID: </span>{{ author.userId }}</p>
+      <p><span>Email: </span>{{ author.email }}</p>
+      <p><span>City: </span>{{ author.city }}</p>
+      <p><span>Country: </span>{{ author.country }}</p>
+      <button mat-flat-button (click)="editAuthor()" color="primary">
+        Edit author data
+      </button>
+      <button mat-flat-button (click)="removeAuthor()" color="warn">
+        Remove me as Author
+      </button>
+    </ng-container>
+    <ng-container *ngIf="!author.userId">
+      <h2>{{ user.fullname }}</h2>
+      <p><span>User ID: </span>{{ user.userId }}</p>
+      <p><span>Email: </span>{{ user.email }}</p>
+      <button mat-flat-button (click)="createAuthor()" color="primary">
+        Become an author
+      </button>
+    </ng-container>
   </div>
-
 </div>
 
 <div class="profile-card" *ngIf="isLoggedOut || !user">
-
   <h4>
     Please
-    <button
-      color="primary"
-      (click)="goToLogin()"
-      mat-flat-button>
+    <button color="primary" (click)="goToLogin()" mat-flat-button>
       Login
     </button>
     if you want to be involved in chat
   </h4>
-
-  </div>
+</div>

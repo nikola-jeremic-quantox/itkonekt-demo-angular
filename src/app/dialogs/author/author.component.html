@@ -1,0 +1,71 @@
+<h2>
+  {{ data.title }}
+</h2>
+<hr>
+<br>
+<form [formGroup]="form" autocomplete="off">
+
+    <!-- 1. Fullname -->
+    <mat-form-field color="accent">
+      <input
+        formControlName="fullname"
+        matInput
+        placeholder="Enter your full name"
+      />
+      <mat-error *ngIf="form.get('fullname').errors?.required">
+        *Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- 2. Email -->
+    <mat-form-field color="accent">
+      <input
+        formControlName="email"
+        matInput
+        placeholder="Enter your email"
+      />
+      <mat-error *ngIf="form.get('email').errors?.required">
+        *Email is required
+      </mat-error>
+      <mat-error *ngIf="form.get('email').errors?.email">
+        *Email format is not valid
+      </mat-error>
+    </mat-form-field>
+
+    <!-- 3. Photo -->
+    <mat-form-field color="accent">
+      <input
+        formControlName="photoUrl"
+        matInput
+        placeholder="Enter your photoUrl"
+      />
+    </mat-form-field>
+
+    <!-- 4. Country -->
+    <mat-form-field color="accent">
+      <input
+        formControlName="country"
+        matInput
+        placeholder="Enter your country"
+      />
+      <mat-error *ngIf="form.get('country').errors?.required">
+        *Country is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- 5. City -->
+    <mat-form-field color="accent">
+      <input
+        formControlName="city"
+        matInput
+        placeholder="Enter your city"
+      />
+      <mat-error *ngIf="form.get('city').errors?.required">
+        *City is required
+      </mat-error>
+    </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="onFormSubmit()">
+    Save Data to Firebase
+  </button>
+</form>
