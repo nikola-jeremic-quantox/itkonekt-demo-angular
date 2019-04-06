@@ -1,6 +1,7 @@
 <h2 class="note-title">
   Notes
   <button
+    *ngIf="author && author.userId"
     mat-raised-button
     color="primary"
     (click)="createNote()">
@@ -40,7 +41,7 @@
       </mat-card-content>
 
       <mat-card-actions *ngIf="note.authorId === user.userId">
-        <button mat-button>Edit</button>
+        <button mat-button (click)="editNote(note)">Edit</button>
         <button mat-button>Delete</button>
       </mat-card-actions>
 
