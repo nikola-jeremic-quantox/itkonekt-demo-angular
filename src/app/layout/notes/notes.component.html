@@ -10,7 +10,7 @@
   </button>
 </h2>
 
-<div class="notes-wrapper">
+<div class="notes-wrapper" *ngIf="user">
     <mat-card
       class="notes"
       *ngFor="let note of (notes$ | async)"
