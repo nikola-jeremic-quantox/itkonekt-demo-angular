@@ -33,11 +33,10 @@ export class ProfileComponent implements OnInit {
   }
 
   getAuthor() {
-    const id = this.user.userId;
+    const id = this.user && this.user.userId;
     this.apiService.getSingleItem('authors', id).subscribe(
       author => {
         this.author = author;
-        console.log(author);
       }
     );
   }
