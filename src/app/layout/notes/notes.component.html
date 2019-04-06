@@ -16,7 +16,7 @@
       *ngFor="let note of (notes$ | async)"
       [style.backgroundColor]="
         note.authorId === user.userId ?
-        'rgb(48, 122, 87)' :
+        'rgb(100, 48, 122)' :
         'rgb(48, 95, 122)' ">
 
       <mat-card-header>
@@ -42,7 +42,7 @@
 
       <mat-card-actions *ngIf="note.authorId === user.userId">
         <button mat-button (click)="editNote(note)">Edit</button>
-        <button mat-button>Delete</button>
+        <button mat-button (click)="deleteNote(note)">Delete</button>
       </mat-card-actions>
 
     </mat-card>

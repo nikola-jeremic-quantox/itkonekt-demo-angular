@@ -45,6 +45,11 @@ export class NotesComponent implements OnInit {
         author: this.author
       }
     });
+    this.subscribeToDialogData();
+  }
+
+  deleteNote(note) {
+    this.apiService.deleteItem('notes', note.id);
   }
 
   editNote(note) {
@@ -56,6 +61,7 @@ export class NotesComponent implements OnInit {
         author: this.author
       }
     });
+    this.subscribeToDialogData();
   }
 
   getAuthor() {
@@ -70,4 +76,14 @@ export class NotesComponent implements OnInit {
 
   }
 
+  subscribeToDialogData() {
+    this.dialogRef.afterClosed().subscribe(object => {
+      if (object.id) {
+        const id = object.id;
+        this.apiService.updateItem('notes', object.formValue, id);
+      } else if (object) {
+        this.apiService.createItem('notes', object.formValue);
+      }
+    });
+  }
 }

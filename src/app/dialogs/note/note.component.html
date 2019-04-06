@@ -1,3 +1,36 @@
-<p>
-  note works!
-</p>
+<h2>
+    {{ data.title }}
+  </h2>
+  <hr>
+  <br>
+  <form [formGroup]="form" autocomplete="off">
+
+      <!-- 1. Fullname -->
+      <mat-form-field color="accent">
+        <input
+          formControlName="title"
+          matInput
+          placeholder="Enter note title"
+        />
+        <mat-error *ngIf="form.get('title').errors?.required">
+          *Title is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- 2. Email -->
+      <mat-form-field color="accent">
+        <textarea
+          formControlName="message"
+          matInput
+          placeholder="Enter note message"
+        ></textarea>
+        <mat-error *ngIf="form.get('message').errors?.required">
+          *Message is required
+        </mat-error>
+      </mat-form-field>
+
+
+    <button mat-raised-button color="primary" (click)="onFormSubmit()">
+      Save Note
+    </button>
+  </form>

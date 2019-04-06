@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-note',
@@ -10,6 +9,7 @@ import { runInThisContext } from 'vm';
 })
 export class NoteComponent implements OnInit {
 
+  id: string;
   form = new FormGroup({
     title:    new FormControl('', [Validators.required]),
     message:  new FormControl('', [Validators.required]),
@@ -17,6 +17,7 @@ export class NoteComponent implements OnInit {
     authorId:     new FormControl('', [Validators.required]),
     authorPhoto:  new FormControl('', [Validators.required]),
   });
+
 
   constructor(
     public dialogRef: MatDialogRef<NoteComponent>,
@@ -30,6 +31,7 @@ export class NoteComponent implements OnInit {
   fillForm() {
     if (this.data.note) {
       this.form.patchValue(this.data.note);
+      this.id = this.data.note.id;
     }
     this.form.get('author').setValue(this.data.author.fullname);
     this.form.get('authorId').setValue(this.data.author.userId);
@@ -39,7 +41,7 @@ export class NoteComponent implements OnInit {
   onFormSubmit() {
     if (this.form.valid) {
       const formValue = Object.assign(this.form.value);
-      this.dialogRef.close(formValue);
+      this.dialogRef.close({formValue, id: this.id});
     }
   }
 }
