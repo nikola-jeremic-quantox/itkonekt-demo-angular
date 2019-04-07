@@ -16,7 +16,7 @@ export class DrawerComponent implements OnDestroy {
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
-    private media: MediaMatcher,
+    private media: MediaMatcher
   ) {
     this.mobileQuery = media.matchMedia(this.smallScreen);
     this.mobileQuery.addListener(() => changeDetectorRef.detectChanges());

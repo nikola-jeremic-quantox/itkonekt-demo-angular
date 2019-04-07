@@ -12,10 +12,11 @@
       #sidenav
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       position="end">
-      <app-chat></app-chat>
+      <app-chat
+      (swiperight)="sidenav.toggle()"></app-chat>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content (swipeleft)="sidenav.toggle()">
       <app-profile [isLoggedOut]="isLoggedOut"></app-profile>
       <app-notes></app-notes>
     </mat-sidenav-content>

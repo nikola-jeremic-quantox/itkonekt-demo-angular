@@ -5,7 +5,7 @@
     "ng": "ng",
     "dev": "ng serve",
     "prod": "ng build --prod",
-    "deploy": "firebase deploy"
+    "deploy": "ng build --prod && firebase deploy"
   },
   "private": true,
   "dependencies": {

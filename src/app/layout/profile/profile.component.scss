@@ -21,6 +21,9 @@
   display: inline-block;
   margin: 0 10px 20px;
   vertical-align: top;
+  @media screen and (orientation: portrait) {
+    width: calc(100% - 20px);
+  }
   h2 {
     margin-bottom: 10px;
     @media screen and (orientation: portrait) {
