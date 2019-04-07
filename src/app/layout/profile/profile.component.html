@@ -1,5 +1,6 @@
 <div class="profile-card" *ngIf="user && !isLoggedOut">
-  <img [src]="user.photoUrl" alt="user image" />
+  <img *ngIf="author && author.photoUrl" [src]="author.photoUrl" alt="Author image" />
+  <img *ngIf="!author || !author.photoUrl" [src]="user.photoUrl" alt="User image" />
 
   <div class="user-data" *ngIf="author">
     <ng-container *ngIf="author.userId">

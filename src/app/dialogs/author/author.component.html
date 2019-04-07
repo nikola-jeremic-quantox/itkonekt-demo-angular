@@ -1,71 +1,104 @@
 <h2>
   {{ data.title }}
 </h2>
-<hr>
-<br>
+<hr />
+<br />
 <form [formGroup]="form" autocomplete="off">
+  <mat-tab-group mat-stretch-tabs color="accent">
+    <mat-tab label="General Data">
+      <br />
 
-    <!-- 1. Fullname -->
-    <mat-form-field color="accent">
+      <!-- 1. Fullname -->
+      <mat-form-field color="accent">
+        <input
+          formControlName="fullname"
+          matInput
+          placeholder="Enter your full name"
+        />
+        <mat-error *ngIf="form.get('fullname').errors?.required">
+          *Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- 2. Email -->
+      <mat-form-field color="accent">
+        <input
+          formControlName="email"
+          matInput
+          placeholder="Enter your email"
+        />
+        <mat-error *ngIf="form.get('email').errors?.required">
+          *Email is required
+        </mat-error>
+        <mat-error *ngIf="form.get('email').errors?.email">
+          *Email format is not valid
+        </mat-error>
+      </mat-form-field>
+
+      <!-- 3. Photo -->
+      <mat-form-field color="accent">
+        <input
+          formControlName="photoUrl"
+          matInput
+          placeholder="Enter your photoUrl"
+        />
+      </mat-form-field>
+
+      <!-- 4. City -->
+      <mat-form-field color="accent">
+        <input formControlName="city" matInput placeholder="Enter your city" />
+        <mat-error *ngIf="form.get('city').errors?.required">
+          *City is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- 5. Country -->
+      <mat-form-field color="accent">
+        <input
+          formControlName="country"
+          matInput
+          placeholder="Enter your country"
+        />
+        <mat-error *ngIf="form.get('country').errors?.required">
+          *Country is required
+        </mat-error>
+      </mat-form-field>
+    </mat-tab>
+    <mat-tab label="Photo Upload">
       <input
-        formControlName="fullname"
-        matInput
-        placeholder="Enter your full name"
+        #file
+        id="imagefile"
+        accept="image/*"
+        type="file"
+        (change)="onImagePicked($event)"
       />
-      <mat-error *ngIf="form.get('fullname').errors?.required">
-        *Name is required
-      </mat-error>
-    </mat-form-field>
+      <label for="imagefile" class="image-upload">
+        <button mat-raised-button color="accent" (click)="file.click()">
+          Choose a file
+        </button>
+        <img [src]="imagePreview || form.get('photoUrl').value" alt="Image" />
+        <h3 *ngIf="imageFile">
+          {{ imageFile.name }}
+          ({{ imageFile.size / 1024 | number: "1.0-0" }} kb)
+        </h3>
+        <h3 *ngIf="!imageFile">
+          Current photo
+        </h3>
+      </label>
+      <div class="upload-progress" *ngIf="uploadPercent">
+        <mat-progress-bar
+          class="progress-bar"
+          color="accent"
+          mode="determinate"
+          [value]="uploadPercent">
+        </mat-progress-bar>
+        <span>{{uploadPercent / 100 | percent}}</span>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 
-    <!-- 2. Email -->
-    <mat-form-field color="accent">
-      <input
-        formControlName="email"
-        matInput
-        placeholder="Enter your email"
-      />
-      <mat-error *ngIf="form.get('email').errors?.required">
-        *Email is required
-      </mat-error>
-      <mat-error *ngIf="form.get('email').errors?.email">
-        *Email format is not valid
-      </mat-error>
-    </mat-form-field>
-
-    <!-- 3. Photo -->
-    <mat-form-field color="accent">
-      <input
-        formControlName="photoUrl"
-        matInput
-        placeholder="Enter your photoUrl"
-      />
-    </mat-form-field>
-
-    <!-- 4. Country -->
-    <mat-form-field color="accent">
-      <input
-        formControlName="country"
-        matInput
-        placeholder="Enter your country"
-      />
-      <mat-error *ngIf="form.get('country').errors?.required">
-        *Country is required
-      </mat-error>
-    </mat-form-field>
-
-    <!-- 5. City -->
-    <mat-form-field color="accent">
-      <input
-        formControlName="city"
-        matInput
-        placeholder="Enter your city"
-      />
-      <mat-error *ngIf="form.get('city').errors?.required">
-        *City is required
-      </mat-error>
-    </mat-form-field>
-
-  <button mat-raised-button color="primary" (click)="onFormSubmit()">
+  <button mat-raised-button color="primary" (click)="onFormSubmit()"
+    [disabled]="uploadPercent > 0 && uploadPercent < 100">
     Save Data to Firebase
   </button>
 </form>

@@ -47,7 +47,6 @@ export class ProfileComponent implements OnInit {
 
   createAuthor() {
     this.dialogRef = this.dialog.open(AuthorComponent, {
-      width: '600px',
       data: {
         title: 'Become an Author!',
         user: this.user

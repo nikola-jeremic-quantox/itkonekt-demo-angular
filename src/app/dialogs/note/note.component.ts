@@ -4,9 +4,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-note',
-  templateUrl: './note.component.html',
-  styleUrls: ['./note.component.scss']
+  templateUrl: './note.component.html'
 })
+
 export class NoteComponent implements OnInit {
 
   id: string;

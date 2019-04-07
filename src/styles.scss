@@ -1,6 +1,7 @@
-@import '~firebaseui/dist/firebaseui.css';
+@import "~firebaseui/dist/firebaseui.css";
 
-html, body {
+html,
+body {
   height: 100%;
   overflow-x: hidden;
 }
@@ -13,7 +14,13 @@ body {
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
 }
 
@@ -21,12 +28,14 @@ h1, h2, h3, h4, h5, h6, p {
   flex: 1 1 auto;
 }
 
-input, textarea {
+input,
+textarea {
   padding: 8px 10px;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   resize: none;
   outline: 0;
-  &:action, &:hover {
+  &:action,
+  &:hover {
     outline: 0;
   }
 }
@@ -65,4 +74,52 @@ input, textarea {
 
 mat-sidenav-content.mat-drawer-content {
   background: white;
+}
+
+/* DIALOG */
+mat-dialog-container.mat-dialog-container {
+  width: 600px;
+  max-width: 90vw;
+  mat-tab-body.mat-tab-body {
+    height: 400px;
+  }
+  form {
+    text-align: center;
+  }
+  mat-form-field.mat-form-field {
+    display: block;
+    width: 400px;
+    max-width: 90vw;
+    margin: 5px auto;
+  }
+  button {
+    margin: 5px auto;
+    padding: 5px 25px;
+    text-transform: uppercase;
+  }
+}
+
+label.image-upload {
+  cursor: pointer;
+  img {
+    display: block;
+    max-height: 200px;
+    max-width: 500px;
+    margin: 15px auto;
+  }
+  button {
+    display: block;
+    margin: 15px auto;
+  }
+}
+
+#imagefile {
+  visibility: hidden;
+  height: 1px;
+}
+
+mat-progress-bar.mat-progress-bar.progress-bar {
+  height: 10px;
+  max-width: 80%;
+  margin: 10px auto;
 }
