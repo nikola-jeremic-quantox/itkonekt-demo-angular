@@ -12,11 +12,13 @@
       #sidenav
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       position="end">
-      <app-chat
-      (swiperight)="sidenav.toggle()"></app-chat>
+      <app-chat></app-chat>
     </mat-sidenav>
 
-    <mat-sidenav-content (swipeleft)="sidenav.toggle()">
+    <mat-sidenav-content>
+      <button mat-button *ngIf="!sidenav.opened" (click)="sidenav.toggle()">
+        <mat-icon>chat</mat-icon>
+      </button>
       <app-profile [isLoggedOut]="isLoggedOut"></app-profile>
       <app-notes></app-notes>
     </mat-sidenav-content>
