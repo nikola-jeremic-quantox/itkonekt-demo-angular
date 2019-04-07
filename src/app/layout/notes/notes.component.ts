@@ -76,7 +76,7 @@ export class NotesComponent implements OnInit {
 
   subscribeToDialogData() {
     this.dialogRef.afterClosed().subscribe(object => {
-      if (object.id) {
+      if (object && object.id) {
         const id = object.id;
         this.apiService.updateItem('notes', object.formValue, id);
       } else if (object) {

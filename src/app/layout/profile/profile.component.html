@@ -5,23 +5,21 @@
   <div class="user-data" *ngIf="author">
     <ng-container *ngIf="author.userId">
       <h2>{{ author.fullname }}</h2>
-      <p><span>User ID: </span>{{ author.userId }}</p>
-      <p><span>Email: </span>{{ author.email }}</p>
-      <p><span>City: </span>{{ author.city }}</p>
-      <p><span>Country: </span>{{ author.country }}</p>
+      <p><span>Email: </span><strong>{{ author.email }}</strong></p>
+      <p><span>City: </span><strong>{{ author.city }}</strong></p>
+      <p><span>Country: </span><strong>{{ author.country }}</strong></p>
       <button mat-flat-button (click)="editAuthor()" color="primary">
-        Edit author data
+        Edit Author
       </button>
       <button mat-flat-button (click)="removeAuthor()" color="warn">
-        Remove me as Author
+        Delete Author
       </button>
     </ng-container>
     <ng-container *ngIf="!author.userId">
       <h2>{{ user.fullname }}</h2>
-      <p><span>User ID: </span>{{ user.userId }}</p>
-      <p><span>Email: </span>{{ user.email }}</p>
+      <p><span>Email: </span><strong>{{ user.email }}</strong></p>
       <button mat-flat-button (click)="createAuthor()" color="primary">
-        Become an author
+        Become an author!
       </button>
     </ng-container>
   </div>

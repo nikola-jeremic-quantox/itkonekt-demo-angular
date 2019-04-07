@@ -54,6 +54,9 @@ textarea {
   height: 70px;
   min-height: 70px;
   max-height: 70px;
+  button {
+    cursor: pointer;
+  }
 }
 
 .sidenav-container {
@@ -67,7 +70,7 @@ textarea {
 
 .mat-drawer.mat-sidenav {
   width: 400px;
-  max-width: 90vw;
+  max-width: 80vw;
   background: rgb(180, 180, 180);
   box-shadow: 1px 1px 20px 1px rgb(180, 180, 180);
 }
@@ -89,7 +92,7 @@ mat-dialog-container.mat-dialog-container {
   mat-form-field.mat-form-field {
     display: block;
     width: 400px;
-    max-width: 90vw;
+    max-width: 100%;
     margin: 5px auto;
   }
   button {
