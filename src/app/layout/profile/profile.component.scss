@@ -42,13 +42,15 @@
       width: 70px;
     }
     strong {
-      white-space: nowrap;
       font-weight: normal;
-      overflow: hidden;
-      text-overflow: ellipsis;
       display: inline-block;
       vertical-align: middle;
-      max-width: 70%;
+      @media screen and (orientation: portrait) {
+        white-space: nowrap;
+        max-width: 70%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 }
