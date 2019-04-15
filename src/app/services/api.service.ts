@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -8,16 +9,13 @@ export class ApiService {
 
   getAllItems(collection) {
     return this.db
-      .collection(collection)
+      .collection(collection, ref => ref.orderBy('updated') )
       .snapshotChanges()
       .pipe(
         map(snaps =>
           snaps.map(snap => {
-            const item = snap.payload.doc;
-            return {
-              ...item.data(),
-              id: item.id,
-            };
+            const doc = snap.payload.doc;
+            return {...doc.data(), id: doc.id, };
           })
         )
       );
@@ -30,32 +28,38 @@ export class ApiService {
       .snapshotChanges()
       .pipe(
         map(snap => {
-          const item = snap.payload;
-          return {
-            ...item.data(),
-            id: item.id,
-          };
+          const doc = snap.payload;
+          return { ...doc.data(), id: doc.id };
         })
       );
   }
 
   createItem(collection, document) {
+    const date = firebase.firestore.FieldValue.serverTimestamp();
     return this.db
       .collection(collection)
-      .add(document);
+      .add({ ...document,
+        created: date,
+        updated: date
+      });
   }
 
   createItemWithId(collection, document, id) {
+    const date = firebase.firestore.FieldValue.serverTimestamp();
     return this.db
       .collection(collection)
       .doc(id)
-      .set(document);
+      .set({ ...document,
+        created: date,
+        updated: date
+      });
   }
 
   updateItem(collection, document, id) {
+    const date = firebase.firestore.FieldValue.serverTimestamp();
     return this.db
       .doc(`${collection}/${id}`)
-      .update(document);
+      .update({ ...document, updated: date });
   }
 
   deleteItem(collection, id) {

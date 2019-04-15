@@ -33,7 +33,11 @@
           [style.backgroundImage]="defaultImage"
         ></div>
         <mat-card-title>{{ note.title }}</mat-card-title>
-        <mat-card-subtitle>{{ note.author }}</mat-card-subtitle>
+        <mat-card-subtitle>
+          {{ note.author }}
+          <div> from {{ note.updated?.toDate() | date }}</div>
+
+        </mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content>
