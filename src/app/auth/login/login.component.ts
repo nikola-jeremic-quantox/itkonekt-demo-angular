@@ -24,8 +24,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     const uiConfig = {
-      signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
-      callbacks: {signInSuccessWithAuthResult: this.afterLogin.bind(this)}
+      signInFlow:    'popup',
+      signInOptions: [ firebase.auth.GoogleAuthProvider.PROVIDER_ID ],
+      callbacks:     { signInSuccessWithAuthResult: this.afterLogin.bind(this) }
     };
 
     this.ui = new firebaseui.auth.AuthUI(this.fireAuth.auth);
